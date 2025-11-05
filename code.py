@@ -49,3 +49,18 @@ for p in ax.patches:
 
 plt.tight_layout()
 plt.show()
+
+#histogram of transaction amounts.
+sns.histplot(df['Amount'], bins=50, kde=True)
+plt.title('Transaction Amount distribution')
+plt.show()
+
+# -- 4. Data Preprocessing / Manipulation --
+scaler = StandardScaler()
+df['Scaled_Amount'] = scaler.fit_transform(df[['Amount']])
+df2 = df.drop(['Time','Amount'], axis=1)
+X = df2.drop('Class', axis=1)
+y = df2['Class']
+
+
+
