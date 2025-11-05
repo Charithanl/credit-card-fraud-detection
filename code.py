@@ -62,5 +62,10 @@ df2 = df.drop(['Time','Amount'], axis=1)
 X = df2.drop('Class', axis=1)
 y = df2['Class']
 
+# -- 5. Train-Test Split --
+X_train, X_test, y_train, y_test = train_test_split(
+    X, y, test_size=0.20, random_state=123, stratify=y)
+print(X_train.shape, X_test.shape)
+
 
 
