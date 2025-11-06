@@ -75,6 +75,10 @@ y_proba_lr =lr.predict_proba(X_test)[:,1]
 auc_lr = roc_auc_score(y_test, y_proba_lr)
 print("Logistic Regression AUC:", auc_lr)
 print(classification_report(y_test, y_pred_lr))
-
-
-
+fpr, tpr, _ = roc_curve(y_test, y_proba_lr)
+plt.plot(fpr, tpr, label=f'LR (AUC = {auc_lr:.3f})')
+plt.xlabel('False Positive Rate')
+plt.ylabel('True Positive Rate')
+plt.title('ROC Curve')
+plt.legend()
+plt.show()
