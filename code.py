@@ -72,6 +72,9 @@ lr = LogisticRegression(max_iter=1000)
 lr.fit(X_train, y_train)
 y_pred_lr = lr.predict(X_test)
 y_proba_lr =lr.predict_proba(X_test)[:,1]
+auc_lr = roc_auc_score(y_test, y_proba_lr)
+print("Logistic Regression AUC:", auc_lr)
+print(classification_report(y_test, y_pred_lr))
 
 
 
