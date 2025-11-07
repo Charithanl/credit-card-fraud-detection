@@ -70,11 +70,17 @@ print(X_train.shape, X_test.shape)
 # -- 6. Logistic Regresssion Model --
 lr = LogisticRegression(max_iter=1000)
 lr.fit(X_train, y_train)
+#Initializes and fits (trains) a Logistic Regression model.
+#max_iter=1000: ensures the algorithm has enough iterations to converge.
 y_pred_lr = lr.predict(X_test)
 y_proba_lr =lr.predict_proba(X_test)[:,1]
+#predict → outputs predicted classes (0 or 1).
+#predict_proba → outputs probability of each class (we take the 1st column → probability of fraud).
 auc_lr = roc_auc_score(y_test, y_proba_lr)
 print("Logistic Regression AUC:", auc_lr)
 print(classification_report(y_test, y_pred_lr))
+#Calculates AUC (Area Under ROC Curve) → measures model performance (1 = perfect, 0.5 = random).
+#classification_report shows precision, recall, F1-score.
 fpr, tpr, _ = roc_curve(y_test, y_proba_lr)
 plt.plot(fpr, tpr, label=f'LR (AUC = {auc_lr:.3f})')
 plt.xlabel('False Positive Rate')
@@ -82,7 +88,6 @@ plt.ylabel('True Positive Rate')
 plt.title('ROC Curve')
 plt.legend()
 plt.show()
-
 #Plots the ROC Curve.
 #X-axis → False Positive Rate (1 – specificity)
 #Y-axis → True Positive Rate (sensitivity)
