@@ -64,7 +64,10 @@ y = df2['Class']
 
 # -- 5. Train-Test Split --
 X_train, X_test, y_train, y_test = train_test_split(
-    X, y, test_size=0.20, random_state=123, stratify=y) #Splits data into training (80%) and testing (20%) sets.
+    X, y, test_size=0.20, random_state=123, stratify=y) 
+#Splits data into training (80%) and testing (20%) sets.
+#random_state=123 ensures reproducibility.
+#stratify=y keeps the same class ratio (fraud/non-fraud) in both sets.
 print(X_train.shape, X_test.shape)
 
 # -- 6. Logistic Regresssion Model --
