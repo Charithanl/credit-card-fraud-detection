@@ -121,5 +121,13 @@ y_proba_gb = gb.predict_proba(X_test)[:,1]
 auc_gb = roc_auc_score(y_test, y_proba_gb)
 print("Gradient Boosting AUC:", auc_gb)
 print(classification_report(y_test, y_pred_gb))
+fpr_gb, tpr_gb, _ = roc_curve(y_test, y_proba_gb)
+plt.plot(fpr_gb, tpr_gb, label=f'GB (AUC = {auc_gb:.3f})')
+plt.plot([0,1],[0,1],'k--')
+plt.xlabel('False Positive Rate')
+plt.ylabel('True Positive Rate')
+plt.title('ROC – Gradient Boosting')
+plt.legend()
+plt.show()
 
 
