@@ -115,5 +115,11 @@ plt.show()
 
 # -- 8. Artificial Neural Network (MLPClassifier) --
 mlp = MLPClassifier(hidden_layer_sizes=(30,15), activation='relu', solver='adam', random_state=123, max_iter=200)
+gb.fit(X_train, y_train)
+y_pred_gb = gb.predict(X_test)
+y_proba_gb = gb.predict_proba(X_test)[:,1]
+auc_gb = roc_auc_score(y_test, y_proba_gb)
+print("Gradient Boosting AUC:", auc_gb)
+print(classification_report(y_test, y_pred_gb))
 
 
