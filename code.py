@@ -115,19 +115,22 @@ plt.show()
 
 # -- 8. Artificial Neural Network (MLPClassifier) --
 mlp = MLPClassifier(hidden_layer_sizes=(30,15), activation='relu', solver='adam', random_state=123, max_iter=200)
-gb.fit(X_train, y_train)
-y_pred_gb = gb.predict(X_test)
-y_proba_gb = gb.predict_proba(X_test)[:,1]
-auc_gb = roc_auc_score(y_test, y_proba_gb)
-print("Gradient Boosting AUC:", auc_gb)
-print(classification_report(y_test, y_pred_gb))
-fpr_gb, tpr_gb, _ = roc_curve(y_test, y_proba_gb)
-plt.plot(fpr_gb, tpr_gb, label=f'GB (AUC = {auc_gb:.3f})')
+#Creates a neural network model with:
+#2 hidden layers (30 and 15 neurons each),
+#ReLU activation function,
+#Adam optimizer,
+#max_iter=200 training epochs.
+mlp.fit(X_train, y_train)
+y_pred_mlp = mlp.predict(X_test)
+y_proba_mlp = mlp.predict_proba(X_test)[:,1]
+auc_mlp = roc_auc_score(y_test, y_proba_mlp)
+print("MLP Classifier AUC:", auc_mlp)
+print(classification_report(y_test, y_pred_mlp))
+fpr_mlp, tpr_mlp, _ = roc_curve(y_test, y_proba_mlp)
+plt.plot(fpr_mlp, tpr_mlp, label=f'MLP (AUC = {auc_mlp:.3f})')
 plt.plot([0,1],[0,1],'k--')
 plt.xlabel('False Positive Rate')
 plt.ylabel('True Positive Rate')
-plt.title('ROC – Gradient Boosting')
+plt.title('ROC – MLP Classifier')
 plt.legend()
 plt.show()
-
-
