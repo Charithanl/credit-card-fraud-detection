@@ -11,6 +11,7 @@ from sklearn.metrics import roc_auc_score, roc_curve, classification_report, con
 from sklearn.linear_model import LogisticRegression
 from sklearn.tree import DecisionTreeClassifier
 from sklearn.ensemble import GradientBoostingClassifier
+from sklearn.ensemble import HistGradientBoostingClassifier
 from sklearn.neural_network import MLPClassifier
 
 # -- 1. Load dataset --
@@ -136,23 +137,12 @@ plt.legend()
 plt.show()
 
 # -- 9. Gradient Boosting Classifier --
-gb = GradientBoostingClassifier(n_estimators=500, learning_rate=0.01, max_depth=3, random_state=123)
-#n_estimators=500 → number of trees.
-#learning_rate=0.01 → smaller = slower but more accurate learning.
-#max_depth=3 → limits tree complexity.
+# Initialize the model
+gb = HistGradientBoostingClassifier(
+    learning_rate=0.05,    # faster convergence but still stable
+    max_depth=3,           # limits tree complexity
+    max_iter=100,          # number of boosting iterations (similar to n_estimators)
+    random_state=123
+)
+# Train the model
 gb.fit(X_train, y_train)
-y_pred_gb = gb.predict(X_test)
-y_proba_gb = gb.predict_proba(X_test)[:,1]
-auc_gb = roc_auc_score(y_test, y_proba_gb)
-print("Gradient Boosting AUC:", auc_gb)
-print(classification_report(y_test, y_pred_gb))
-fpr_gb, tpr_gb, _ = roc_curve(y_test, y_proba_gb)
-plt.plot(fpr_gb, tpr_gb, label=f'GB (AUC = {auc_gb:.3f})')
-plt.plot([0,1],[0,1],'k--')
-plt.xlabel('False Positive Rate')
-plt.ylabel('True Positive Rate')
-plt.title('ROC – Gradient Boosting')
-plt.legend()
-plt.show()
-
-
