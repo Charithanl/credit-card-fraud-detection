@@ -137,5 +137,11 @@ plt.show()
 
 # -- 9. Gradient Boosting Classifier --
 gb = GradientBoostingClassifier(n_estimators=500, learning_rate=0.01, max_depth=3, random_state=123)
+gb.fit(X_train, y_train)
+y_pred_gb = gb.predict(X_test)
+y_proba_gb = gb.predict_proba(X_test)[:,1]
+auc_gb = roc_auc_score(y_test, y_proba_gb)
+print("Gradient Boosting AUC:", auc_gb)
+print(classification_report(y_test, y_pred_gb))
 
 
