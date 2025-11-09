@@ -137,6 +137,9 @@ plt.show()
 
 # -- 9. Gradient Boosting Classifier --
 gb = GradientBoostingClassifier(n_estimators=500, learning_rate=0.01, max_depth=3, random_state=123)
+#n_estimators=500 → number of trees.
+#learning_rate=0.01 → smaller = slower but more accurate learning.
+#max_depth=3 → limits tree complexity.
 gb.fit(X_train, y_train)
 y_pred_gb = gb.predict(X_test)
 y_proba_gb = gb.predict_proba(X_test)[:,1]
