@@ -21,15 +21,6 @@ It leverages the popular **Credit Card Fraud Detection Dataset** (European trans
 
 ## 🧾 **Section 1 – Load Dataset**
 
-Perfect 👏 — this is a **great dataset summary section** to include in your README.
-Let’s turn that raw output into a **clean, professional Markdown format** (so it looks great on GitHub, Medium, or any report).
-
-Here’s the final version you can copy directly into your `README.md` 👇
-
----
-
-##  **Section 1 – Load Dataset**
-
 ### 📘 Code Used
 
 ```python
