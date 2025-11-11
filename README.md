@@ -134,9 +134,7 @@ X_test: (56,962, 29)
 
 ##  **Section 7 – Decision Tree Classifier**
 
-![ROC – Decision Tree]
-
-C:\credit-card-fraud-detection\images\DT plot.png
+![ROC – Decision Tree](https://github.com/Charithanl/credit-card-fraud-detection/blob/main/images/DT-plot.png)
 
 **Metrics:**
 
@@ -157,9 +155,7 @@ C:\credit-card-fraud-detection\images\DT plot.png
 
 ## 🤖 **Section 8 – Artificial Neural Network (MLP Classifier)**
 
-![ROC – MLP Classifier]
-
-C:\credit-card-fraud-detection\images\MLP plot.png
+![ROC – MLP Classifier](https://github.com/Charithanl/credit-card-fraud-detection/blob/main/images/MLP-plot.png)
 
 **Metrics:**
 
@@ -180,7 +176,7 @@ C:\credit-card-fraud-detection\images\MLP plot.png
 
 ## 🚀 **Section 9 – Gradient Boosting (HistGradientBoosting)**
 
-C:\credit-card-fraud-detection\images\hgb plot.png
+![HistGradientBoosting](https://github.com/Charithanl/credit-card-fraud-detection/blob/main/images/hgb-plot.png)
 
 **Metrics:**
 
